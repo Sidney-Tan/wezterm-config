@@ -22,7 +22,7 @@ config.scrollback_lines = 10000
 -- to a single cell width
 config.enable_scroll_bar = true
 
--- Set ssh_domains manually for quick_domains.wezterm plugin. 
+-- Set ssh_domains manually for quick_domains.wezterm plugin.
 local ssh_domains = {}
 for host, config in pairs(wezterm.enumerate_ssh_hosts()) do
 	table.insert(ssh_domains, {
@@ -46,14 +46,13 @@ for host, config in pairs(wezterm.enumerate_ssh_hosts()) do
 end
 config.ssh_domains = ssh_domains
 
-
 -- Plugins
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
 	options = {
 		icons_enabled = true,
 		theme = "GruvboxDarkHard",
-    tabs_enabled = true,
+		tabs_enabled = true,
 		theme_overrides = {},
 		section_separators = {
 			left = wezterm.nerdfonts.pl_left_hard_divider,
@@ -146,6 +145,18 @@ local domains_config = {
 	kubernetes_shell = "/bin/bash",
 }
 domains.apply_to_config(config, domains_config)
+
+
+-- keybiding
+local act = wezterm.action
+config.mouse_bindings = {
+	{
+		event = { Down = { streak = 1, button = "Middle" } },
+		mods = "NONE",
+		action = act.PasteFrom "Clipboard",
+	},
+}
+
 
 -- and finally, return the configuration to wezterm
 return config
