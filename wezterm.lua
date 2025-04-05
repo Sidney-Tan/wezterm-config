@@ -22,6 +22,9 @@ config.scrollback_lines = 10000
 -- to a single cell width
 config.enable_scroll_bar = true
 
+-- Set max fps
+config.max_fps=240
+
 -- Set ssh_domains manually for quick_domains.wezterm plugin.
 local ssh_domains = {}
 for host, config in pairs(wezterm.enumerate_ssh_hosts()) do
@@ -71,14 +74,17 @@ tabline.setup({
 		tabline_a = { "mode" },
 		tabline_b = { "workspace" },
 		tabline_c = { " " },
-		tab_active = {
+		--[[
+    tab_active = {
 			"index",
 			{ "parent", padding = 0 },
 			"/",
 			{ "cwd", padding = { left = 0, right = 1 } },
 			{ "zoomed", padding = 0 },
 		},
-		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+    --]]
+		tab_active = { "index", { "process", padding = { left = 1, right = 0 } } },
+		tab_inactive = { "index", { "process", padding = { left = 1, right = 0 } } },
 		tabline_x = { "ram", "cpu" },
 		tabline_y = { "datetime", "battery" },
 		tabline_z = { "domain" },
