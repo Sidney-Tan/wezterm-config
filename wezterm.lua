@@ -109,12 +109,12 @@ local domains_config = {
 		-- add remote domains as exec domain for split binds
 		vsplit = {
 			key = "v",
-			mods = "CTRL",
+			mods = "CTRL|OPT",
 			tbl = "",
 		},
 		hsplit = {
 			key = "h",
-			mods = "CTRL",
+			mods = "CTRL|OPT",
 			tbl = "",
 		},
 	},
